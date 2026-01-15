@@ -1,15 +1,25 @@
 {
-  "name": "node-basics",
+  "name": "express",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node --watch index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devansh05/node-refresher.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^25.0.8"
+  "bugs": {
+    "url": "https://github.com/devansh05/node-refresher/issues"
+  },
+  "homepage": "https://github.com/devansh05/node-refresher#readme",
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.8",
+    "express": "^5.2.1"
   }
 }

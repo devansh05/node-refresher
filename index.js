@@ -1,28 +1,15 @@
-const EventEmitter = require("events");
+const express = require("express");
 
-const eventEmitter = new EventEmitter();
+const app = express();
 
-eventEmitter.on("greet", (user) => {
-//   console.log("🟡🟡🟡 LOG 🟡🟡🟡 →  - HELLO ", user);
+app.get("/", (req, res) => {
+  console.log("🟡🟡🟡 LOG 🟡🟡🟡 →  - Method ", req.method);
+  res.status(200).send("Home");
 });
 
-const onlyOnceHandler = (user) => {
-//   console.log("🟡🟡🟡 LOG 🟡🟡🟡 →  - ONLY ONCE ", user);
-};
+app.post("/", (req, res) => {
+  console.log("🟡🟡🟡 LOG 🟡🟡🟡 →  - Method ", req.method);
+  res.status(201).send("Post added");
+});
 
-eventEmitter.once("onlyOnce", onlyOnceHandler);
-
-// eventEmitter.emit("greet", 'Devansh')
-
-// eventEmitter.emit("greet", console.log("🟡🟡🟡 LOG 🟡🟡🟡 →  - HELLO "));
-
-eventEmitter.emit("onlyOnce", "Devansh");
-eventEmitter.emit("greet", "Nisha");
-eventEmitter.emit("greet", "Devansh 2");
-
-// eventEmitter.removeListener("onlyOnce");
-eventEmitter.once("onlyOnce", onlyOnceHandler);
-// eventEmitter.removeAllListeners()
-
-
-console.log('🟡🟡🟡 LOG 🟡🟡🟡 →  - ALL ', eventEmitter.listeners)
+app.listen(3000, console.log("🟡🟡🟡 LOG 🟡🟡🟡 →  - LISTENING ON 3000"));
