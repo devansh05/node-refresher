@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "title": "Harry Potter and the Philosopher's Stone",
+    "author": "J.K. Rowling"
+  },
+  {
+    "id": 2,
+    "title": "Harry Potter and the Chamber of Secrets",
+    "author": "J.K. Rowling"
+  },
+  {
+    "id": 3,
+    "title": "Harry Potter and the Prisoner of Azkaban",
+    "author": "J.K. Rowling"
+  },
+  {
+    "id": 4,
+    "title": "Harry Potter and the Goblet of Fire",
+    "author": "J.K. Rowling"
+  },
+  {
+    "id": 5,
+    "title": "Harry Potter and the Order of the Phoenix",
+    "author": "J.K. Rowling"
+  },
+  {
+    "id": 6,
+    "title": "Harry Potter and the Half-Blood Prince",
+    "author": "J.K. Rowling"
+  },
+  {
+    "id": 7,
+    "title": "Harry Potter and the Deathly Hallows",
+    "author": "J.K. Rowling"
+  },
+
+  { "id": 8, "title": "The Hobbit", "author": "J.R.R. Tolkien" },
+  { "id": 9, "title": "The Lord of the Rings", "author": "J.R.R. Tolkien" },
+  { "id": 10, "title": "The Silmarillion", "author": "J.R.R. Tolkien" },
+
+  { "id": 11, "title": "1984", "author": "George Orwell" },
+  { "id": 12, "title": "Animal Farm", "author": "George Orwell" },
+
+  { "id": 13, "title": "The Alchemist", "author": "Paulo Coelho" },
+  { "id": 14, "title": "Brida", "author": "Paulo Coelho" },
+
+  { "id": 15, "title": "To Kill a Mockingbird", "author": "Harper Lee" },
+  { "id": 16, "title": "The Great Gatsby", "author": "F. Scott Fitzgerald" },
+  { "id": 17, "title": "Pride and Prejudice", "author": "Jane Austen" },
+  { "id": 18, "title": "The Catcher in the Rye", "author": "J.D. Salinger" },
+  { "id": 19, "title": "The Da Vinci Code", "author": "Dan Brown" },
+  { "id": 20, "title": "Angels & Demons", "author": "Dan Brown" }
+]
