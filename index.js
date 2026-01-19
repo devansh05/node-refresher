@@ -5,6 +5,29 @@ const app = express();
 //middleware to extract request body in json
 app.use(express.json());
 
+//custom middleware
+app.use((req, res, next) => {
+  console.log(`🟡 LOG - : ${"MIDDLEWARE 1"}`);
+  next();
+});
+
+app.use((req, res, next) => {
+  console.log(`🟡 LOG - : ${"MIDDLEWARE 2"}`);
+  next();
+});
+
+// Local Middleware Only For Books Route
+app.use("/books", (req, res, next) => {
+  console.log(`🟡 LOG - : ${"Get books route local middleware"}`);
+  next();
+});
+
+function localMiddlewareDeleteBooksRoute(req, res, next) {
+  console.log(`🟡 LOG - : ${"Delete books route local middleware"}`);
+
+  next();
+}
+
 app.get("/books", (req, res) => {
   res.status(200).json(booksArr);
 });
@@ -27,7 +50,7 @@ app.post("/book", (req, res) => {
 });
 
 // app.delete("/delete/book/:id", (req, res) => `${book.id}` !== `${req.params.id}`);
-app.delete("/delete/books/:id", (req, res) => {
+app.delete("/delete/books/:id", localMiddlewareDeleteBooksRoute, (req, res) => {
   res
     .status(200)
     .json(booksArr.filter((book) => `${book.id}` !== `${req.params.id}`));
