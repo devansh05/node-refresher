@@ -1,0 +1,18 @@
+# windows > C > PC > docker > node-postgres
+
+services:
+  postgres:
+    image: postgres:18.1
+    container_name: node_postgres_demo
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: node-postgres-demo
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: devansh123
+    volumes:
+      - pgdata:/var/lib/postgresql
+
+volumes:
+  pgdata:
