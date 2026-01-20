@@ -1,11 +1,14 @@
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "..", ".env") });
+
 const { Pool } = require("pg");
 
 const pool = new Pool({
-  host: "192.168.29.144", // Windows machine IP (from ipconfig)
-  port: 5432, // Exposed Docker port
-  user: "admin", // POSTGRES_USER
-  password: "devansh123", // POSTGRES_PASSWORD
-  database: "node-postgres-demo", // POSTGRES_DB
+  host: process.env.DB_HOST, // Windows machine IP (from ipconfig)
+  port: process.env.DB_PORT, // Exposed Docker port
+  user: process.env.DB_USER, // POSTGRES_USER
+  password: process.env.DB_PASSWORD, // POSTGRES_PASSWORD
+  database: process.env.DB_NAME, // POSTGRES_DB
   ssl: false, // Important for local Docker
 });
 

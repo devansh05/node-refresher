@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node --watch index.js"
+    "start": "node --watch index.js",
+    "drizzle:push": "npx drizzle-kit generate --config drizzle.config.js",
+    "drizzle:studio": "npx drizzle-kit studio --config drizzle.config.js"
   },
   "repository": {
     "type": "git",
@@ -19,12 +21,15 @@
   "homepage": "https://github.com/devansh05/node-refresher#readme",
   "dependencies": {
     "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.45.1",
     "express": "^5.2.1",
     "pg": "^8.17.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^25.0.9",
-    "@types/react": "^19.2.8"
+    "@types/pg": "^8.16.0",
+    "@types/react": "^19.2.8",
+    "drizzle-kit": "^0.31.8"
   }
 }
