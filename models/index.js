@@ -1,4 +1,4 @@
-import { authorsTable } from "./authors.model";
-import { booksTable } from "./books.model";
+const { authorsTable } = require("./authors.model");
+const { booksTable } = require("./books.model");
 
 module.exports = { authorsTable, booksTable };

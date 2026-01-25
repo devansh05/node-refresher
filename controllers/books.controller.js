@@ -1,28 +1,71 @@
-const booksArr = require("../models/mock-books.json");
+const db = require("../database");
+const { eq } = require("drizzle-orm");
+const { uuid } = require("drizzle-orm/pg-core");
 
-exports.getAllBooks = function (req, res) {
-  res.status(200).json(booksArr);
+const { booksTable, authorsTable } = require("../models/index.js");
+
+const getAllBooks = async function (req, res) {
+  try {
+    const books = await db.select().from(booksTable);
+    return res.json(books);
+  } catch (error) {
+    console.error("Failed to fetch books", error.message);
+    res.status(500).json({ error: "Failed to fetch books." + error.message });
+    return;
+  }
 };
 
-exports.getBookById = function (req, res) {
-  const book = booksArr.find((book) => `${book.id}` === `${req.params.id}`);
-  book?.id
-    ? res.status(200).json(book)
-    : res.status(400).json({ error: "No book found." });
+const getBookById = async function (req, res) {
+  try {
+    const result = await db
+      .select()
+      .from(booksTable)
+      .innerJoin(authorsTable, eq(booksTable.authorId, authorsTable.id))
+      .where(eq(booksTable.id, req.params.id));
+
+    const [book] = result;
+
+    res.json(book);
+  } catch (error) {
+    console.error("Failed to fetch book", error);
+    res.status(500).json({ error: "Failed to fetch book." });
+  }
 };
 
-exports.addNewBook = function (req, res) {
-  const { title, author } = req.body;
-  const books = [
-    ...booksArr,
-    { id: booksArr[booksArr.length - 1].id + 1, title: title, author: author },
-  ];
-  res.status(201).json(books);
+const addNewBook = async (req, res) => {
+  const { email, name, authorId } = req.body;
+
+  const [authorFound] = await db
+    .select()
+    .from(authorsTable)
+    .where(eq(authorsTable.id, authorId));
+
+  if (authorFound.id) {
+    const [bookAdded] = await db
+      .insert(booksTable)
+      .values({ name: name, email: email, authorId: authorId })
+      .returning({ name: booksTable.name });
+    return res.send({ book: bookAdded });
+  }
+  res.status(402).send("No author found");
 };
 
-// router.delete("/delete/book/:id", (req, res) => `${book.id}` !== `${req.params.id}`);
-exports.deleteBookById = function (req, res) {
-  res
-    .status(200)
-    .json(booksArr.filter((book) => `${book.id}` !== `${req.params.id}`));
+const deleteBookById = async function (req, res) {
+  try {
+    const [deletedBook] = await db
+      .delete(booksTable)
+      .where(eq(booksTable.id, req.params.id))
+      .returning({ deletedBook: booksTable.id });
+
+    if (!deletedBook) {
+      return res.status(404).json({ error: "Book not found." });
+    }
+
+    res.status(200).json(deletedBook);
+  } catch (error) {
+    console.error("Failed to delete book", error);
+    res.status(500).json({ error: "Failed to delete book." });
+  }
 };
+
+module.exports = { getAllBooks, getBookById, addNewBook, deleteBookById };

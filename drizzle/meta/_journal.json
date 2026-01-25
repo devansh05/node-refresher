@@ -8,6 +8,34 @@
       "when": 1768921475130,
       "tag": "0000_colossal_marvex",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1769253020858,
+      "tag": "0001_goofy_spectrum",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1769265073365,
+      "tag": "0002_empty_hemingway",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1769281617094,
+      "tag": "0003_warm_ironclad",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1769323614461,
+      "tag": "0004_outstanding_boom_boom",
+      "breakpoints": true
     }
   ]
 }
